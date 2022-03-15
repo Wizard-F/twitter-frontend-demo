@@ -12,7 +12,6 @@ export default class TweetList extends React.Component {
   }
 
   componentDidMount() {
-    console.log(process.env.REACT_APP_TWITTER_API_DEMO);
     axios.get(process.env.REACT_APP_TWITTER_API_DEMO + '/api/tweets')
       .then((res) => {
         this.setState({tweets: res.data})
