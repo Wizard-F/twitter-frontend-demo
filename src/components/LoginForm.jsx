@@ -34,8 +34,11 @@ export default function LoginForm() {
     <form style={{margin: "1rem"}} onSubmit={handleSubmit}>
       <div>
         <label>
-          Email
+          Email {}
           <input
+            style={{
+              margin: "1rem"
+            }}
             type="text"
             value={email}
             placeholder="your email"
@@ -47,6 +50,9 @@ export default function LoginForm() {
         <label>
           Password
           <input
+            style={{
+              margin: "1rem"
+            }}
             type="text"
             value={password}
             placeholder="your password"
@@ -54,11 +60,10 @@ export default function LoginForm() {
           />
         </label>
       </div>
-      <div>
+      <div style={{margin: "1rem"}}>
         <button type="submit">Login</button>
       </div>
       <p style={{color: 'red'}}>{invalid ? 'INVALID' : null}</p>
     </form>
   );
 }
-

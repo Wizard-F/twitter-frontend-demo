@@ -23,11 +23,12 @@ export default class TweetList extends React.Component {
     return (
       <main
         style={{
-          padding: "1rem"
+          padding: "1rem",
+          // margin: "0.5rem"
         }}
       >
         {this.state.tweets.map((tweet) => {
-          return <TweetCard author={tweet.author.name} lastModifiedAt={tweet.lastModifiedAt} content={tweet.content} />;
+          return <TweetCard author={tweet.author.name} content={tweet.content} lastModifiedAt={tweet.lastModifiedAt} />;
         })}
       </main>
     );

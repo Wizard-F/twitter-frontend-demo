@@ -9,28 +9,32 @@ function App() {
 
   return (
     <div style={{display: "flex"}}>
-    <nav
-      style={{
-        borderRight: "solid 1px",
-        padding: "1rem"
-      }}
-    >
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        {
-          token ?
+      <nav
+        style={{
+          borderRight: "solid 1px",
+          padding: "1rem",
+          margin: "1rem"
+        }}
+      >
+        <ul>
           <li>
-            <Link to="logout">Logout</Link>
-          </li> :
-          <li>
-            <Link to="login">Login</Link>
+            <a href="/">Home</a>
           </li>
-        }
-      </ul>
-    </nav>
-    <Outlet context={[token, setToken]} />
+          <li>
+            <Link to="about">About</Link>
+          </li>
+          {
+            token ?
+            <li>
+              <Link to="logout">Logout</Link>
+            </li> :
+            <li>
+              <Link to="login">Login</Link>
+            </li>
+          }
+        </ul>
+      </nav>
+      <Outlet context={[token, setToken]} />
     </div>
   );
 }
