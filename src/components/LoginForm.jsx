@@ -7,7 +7,7 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [invalid, setInvalid] = useState(false);
-  const [token, setToken] = useOutletContext();
+  const [user, setUser] = useOutletContext();
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -17,7 +17,7 @@ export default function LoginForm() {
         process.env.REACT_APP_TWITTER_API_DEMO + '/api/auth',
         {email: email, password: password}
       );
-      setToken(response.data);
+      setUser(response.data);
     } catch (e) {
       setInvalid(true);
       setEmail("");
@@ -26,7 +26,7 @@ export default function LoginForm() {
     }
   };
   
-  if (token) {
+  if (user) {
     return <Navigate to="/" />;
   }
 

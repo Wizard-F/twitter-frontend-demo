@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import { Navigate, useOutletContext } from 'react-router-dom'
 
 export default function Logout() {
-  const [token, setToken] = useOutletContext();
-  setToken(null);
-  localStorage.clear();
+  const [user, setUser] = useOutletContext();
+  useEffect(() => {
+    setUser(null);
+    localStorage.removeItem('user');
+  });
+  
   return <Navigate to="/" />;
 }

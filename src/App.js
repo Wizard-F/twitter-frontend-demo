@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 
-import useToken from "./components/useToken";
+import useUser from "./components/useUser";
 
 
 function App() {
-  const [token, setToken] = useToken();
+  const [user, setUser] = useUser();
 
   return (
     <div style={{display: "flex"}}>
@@ -24,7 +24,7 @@ function App() {
             <Link to="about">About</Link>
           </li>
           {
-            token ?
+            user ?
             <li>
               <Link to="logout">Logout</Link>
             </li> :
@@ -34,48 +34,9 @@ function App() {
           }
         </ul>
       </nav>
-      <Outlet context={[token, setToken]} />
+      <Outlet context={[user, setUser]} />
     </div>
   );
 }
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       email: localStorage.getItem('email')
-//     };
-//   }
-
-//   render() {
-
-//     return (
-//       <div style={{display: "flex"}}>
-//       <nav
-//         style={{
-//           borderRight: "solid 1px",
-//           padding: "1rem"
-//         }}
-//       >
-//         <ul>
-//           <li>
-//             <a href="/">Home</a>
-//           </li>
-//           {
-//             this.state.email ?
-//             <li>
-//               <a href="/logout">Logout</a>
-//             </li> :
-//             <li>
-//               <a href="/login">Login</a>
-//             </li>
-//           }
-//         </ul>
-//       </nav>
-//       <Outlet />
-//       </div>
-//     );
-//   }
-// }
 
 export default App;
