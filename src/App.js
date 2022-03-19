@@ -24,6 +24,12 @@ function App() {
             <Link to="about">About</Link>
           </li>
           {
+            user && 
+            <li>
+            <Link to="/tweets/new">Post Tweet</Link>
+            </li>
+          }
+          {
             user ?
             <li>
               <Link to="logout">Logout</Link>

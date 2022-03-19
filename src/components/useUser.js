@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export default function useUser() {
-  const [user, setUser] = useState(localStorage.getItem('user'));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
   const saveUser = user => {
-    localStorage.setItem('user', user);
+    localStorage.setItem('user', JSON.stringify(user));
     setUser(user);
   };
 

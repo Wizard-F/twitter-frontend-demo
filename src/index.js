@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import App from './App';
 import TweetList from './components/TweetList';
@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import Logout from './components/Logout';
 import AboutInfo from './components/AboutInfo';
 import Tweet from './components/Tweet';
+import NewTweet from './components/NewTweet';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -17,7 +18,11 @@ ReactDOM.render(
         <Route path="login" element={<LoginForm />} />
         <Route path="logout" element={<Logout />} />
         <Route path='about' element={<AboutInfo />} />
-        <Route path='tweets/:tweetId' element={<Tweet />} />
+        <Route path='tweets'>
+          <Route index element={<Navigate to='/' />} />
+          <Route path=':tweetId' element={<Tweet />} />
+          <Route path='new' element={<NewTweet />} />
+        </Route>
         <Route
           path="*"
           element={

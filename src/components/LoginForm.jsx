@@ -22,7 +22,7 @@ export default function LoginForm() {
       setInvalid(true);
       setEmail("");
       setPassword("");
-      console.log(response);
+      console.log('ERROR');
     }
   };
   
@@ -34,7 +34,7 @@ export default function LoginForm() {
     <form style={{margin: "1rem"}} onSubmit={handleSubmit}>
       <div>
         <label>
-          Email {}
+          Email
           <input
             style={{
               margin: "1rem"
