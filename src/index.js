@@ -9,12 +9,14 @@ import Logout from './components/Logout';
 import AboutInfo from './components/AboutInfo';
 import Tweet from './components/Tweet';
 import NewTweet from './components/NewTweet';
+import RegisterForm from "./components/RegisterForm"
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<TweetList />} />
+        <Route path="register" element={<RegisterForm />} />
         <Route path="login" element={<LoginForm />} />
         <Route path="logout" element={<Logout />} />
         <Route path='about' element={<AboutInfo />} />

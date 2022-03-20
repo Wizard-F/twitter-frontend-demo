@@ -1,31 +1,29 @@
 import axios from "axios";
 import { useState } from "react";
-import { Navigate, useOutletContext, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useOutletContext, Navigate } from "react-router-dom";
 
 
-export default function LoginForm() {
+export default function RegisterForm() {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [invalid, setInvalid] = useState(false);
+  const [registerFail, setRegisterFail] = useState();
   const [user, setUser] = useOutletContext();
 
   const handleSubmit = async event => {
     event.preventDefault();
-    let response;
     try {
-      response = await axios.post(
-        process.env.REACT_APP_TWITTER_API_DEMO + '/api/auth',
-        {email: email, password: password}
+      const response = await axios.post(
+        process.env.REACT_APP_TWITTER_API_DEMO + '/api/users',
+        {name: username, email, password}
       );
       setUser(response.data);
-    } catch (e) {
-      setInvalid(true);
-      setEmail("");
-      setPassword("");
-      console.log('ERROR');
+    } catch (error) {
+      setRegisterFail(error.response.data);
     }
   };
-  
+
   if (user) {
     return <Navigate to="/" />;
   }
@@ -33,6 +31,20 @@ export default function LoginForm() {
   return (
     <main>
       <form style={{margin: "1rem"}} onSubmit={handleSubmit}>
+        <div>
+          <label>
+            Username
+            <input
+              style={{
+                margin: "1rem"
+              }}
+              type="text"
+              value={username}
+              placeholder="your username"
+              onChange={({target}) => setUsername(target.value)}
+            />
+          </label>
+        </div>
         <div>
           <label>
             Email
@@ -62,12 +74,15 @@ export default function LoginForm() {
           </label>
         </div>
         <div style={{margin: "1rem"}}>
-          <button type="submit">Login</button>
+          <button type="submit">Register</button>
         </div>
-        <p style={{color: 'red'}}>{invalid ? 'INVALID' : null}</p>
+        {
+          registerFail &&
+          <p style={{color: 'red'}}>{registerFail}</p>
+        }
       </form>
       <div style={{margin: "1rem"}}>
-        Not registered yet? <Link to="/register">Register here</Link>
+        Already have an account? <Link to="/login">Login here</Link>
       </div>
     </main>
   );
