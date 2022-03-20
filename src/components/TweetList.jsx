@@ -28,7 +28,7 @@ export default class TweetList extends React.Component {
         }}
       >
         {this.state.tweets.map((tweet) => {
-          return <TweetCard author={tweet.author.name} content={tweet.content} lastModifiedAt={tweet.lastModifiedAt} />;
+          return <TweetCard author={tweet.author.name} content={tweet.content} lastModifiedAt={tweet.lastModifiedAt} id={tweet._id} />;
         })}
       </main>
     );

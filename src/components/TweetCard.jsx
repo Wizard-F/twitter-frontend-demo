@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 export default function TweetCard(props) {
   const lastModifiedAt = new Date(props.lastModifiedAt);
@@ -13,6 +13,7 @@ export default function TweetCard(props) {
     >
       <p>{props.author} <span style={{color: 'gray'}}>on {lastModifiedAt.getFullYear()}-{lastModifiedAt.getMonth()}-{lastModifiedAt.getDate()}</span></p>
       <p>{props.content}</p>
+      <Link to={'tweets/' + props.id}>More</Link>
     </div>
   );
 }

@@ -22,7 +22,6 @@ export default function NewTweet() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    console.log(typeof(user), user);
     if (content.length > 280) {
       setTooLong(true);
       return;
