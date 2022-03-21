@@ -118,7 +118,7 @@ export default function Tweet() {
         <div>
           <button onClick={handleDiscardChanges}>Discard Changes</button>
           &nbsp;
-          <input type="submit" value="Save changes" />
+          <button type="submit">Save Changes</button>
         </div>
         {
           tooLong &&

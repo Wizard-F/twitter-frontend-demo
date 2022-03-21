@@ -9,38 +9,34 @@ function App() {
 
   return (
     <div style={{display: "flex"}}>
-      <nav
-        style={{
-          borderRight: "solid 1px",
-          padding: "1rem",
-          margin: "1rem"
-        }}
-      >
-        <ul>
-          <li>
-            <a href="/">Home</a>
+      <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+        <ul className="nav nav-pills flex-column mb-auto">
+          <li className="nav-item">
+            <Link className="nav-link text-white" to="/">Home</Link> 
           </li>
           <li>
-            <Link to="about">About</Link>
+            <Link className="nav-link text-white" to="about">About</Link> 
           </li>
           {
             user && 
             <li>
-            <Link to="/tweets/new">Post Tweet</Link>
+              <Link className="nav-link text-white" to="/tweets/new">Post Tweet</Link>
             </li>
           }
           {
             user ?
             <li>
-              <Link to="logout">Logout</Link>
+              <Link className="nav-link text-white" to="logout">Logout</Link>
             </li> :
             <li>
-              <Link to="login">Login</Link>
+              <Link className="nav-link text-white" to="login">Login</Link>
             </li>
           }
         </ul>
-      </nav>
-      <Outlet context={[user, setUser]} />
+      </div>
+      <div className="container">
+        <Outlet context={[user, setUser]} />
+      </div>
     </div>
   );
 }
